@@ -53,38 +53,52 @@ This isolation is crucial to prevent accidental complexity, inconsistent termino
 #### Characteristics
 
 **Ubiquitous language**  
-A Bounded Context has its own ubiquitous language that is used by business owners, domain experts and developers to communicate concepts within the according part of the domain. Each term has a specific meaning within a Bounded Context. When the same term is used in different Bounded Contexts, then it typically has different meanings.
+A Bounded Context has its own ubiquitous language that is used by business owners, domain experts and developers to communicate concepts within the according part of the domain.
+Each term has a specific meaning within a Bounded Context.
+When the same term is used in different Bounded Contexts, then it typically has different meanings.
 
 **Boundary**  
-A Bounded Context has a clearly defined boundary that separates it from other Bounded Contexts. The boundary defines which concepts reside within the Bounded Context and which do not.
+A Bounded Context has a clearly defined boundary that separates it from other Bounded Contexts.
+The boundary defines which concepts reside within the Bounded Context and which do not.
 
 **Domain model**  
-A Bounded Context has its own domain model that is tailored to the specific needs of that context. The domain model within a Bounded Context may be different from the domain model used in other contexts.
+A Bounded Context has its own domain model that is tailored to the specific needs of that context.
+The domain model within a Bounded Context may be different from the domain model used in other contexts.
 
 **Relationships**  
-A Bounded Context may have relationships with other Bounded Contexts. These relationships may include sharing data or collaborating on business processes. The relationships between Bounded Contexts should be clearly defined and mapped to ensure that they are consistent and well-defined.
+A Bounded Context may have relationships with other Bounded Contexts.
+These relationships may include sharing data or collaborating on business processes.
+The relationships between Bounded Contexts should be clearly defined and mapped to ensure that they are consistent and well-defined.
 
 **Consistency**  
 The domain model within a Bounded Context should be internally consistent, with a clear understanding of the business rules and constraints that apply within that context.
 
 **Ownership**  
-According to the ubiquitous language the ownership of a Bounded Context is owned by exactly one team. A team may also be responsible for multiple Bounded Contexts. A Bounded Context is never owned by more than one team, because this would lead to the loss of clarity about the meaning of terms in the ubiquitous language.
+According to the ubiquitous language the ownership of a Bounded Context is owned by exactly one team.
+A team may also be responsible for multiple Bounded Contexts.
+A Bounded Context is never owned by more than one team, because this would lead to the loss of clarity about the meaning of terms in the ubiquitous language.
 
 #### Modeling hints
 
-Bounded Contexts are useful to create a clear and well-defined boundary around a specific subdomain or business capability, with a shared language and consistent set of rules and concepts. The following criteria may guide with modeling.
+Bounded Contexts are useful to create a clear and well-defined boundary around a specific subdomain or business capability, with a shared language and consistent set of rules and concepts.
+The following criteria may guide with modeling.
 
 **Business capabilities**  
-A Bounded Context should align with a specific business capability or subdomain of the (overall) domain. The boundary should be defined based on the business capabilities that are being served by the context.
+A Bounded Context should align with a specific business capability or subdomain of the (overall) domain.
+The boundary should be defined based on the business capabilities that are being served by the context.
 
 **Ubiquitous language**  
-A Bounded Context should have a well-defined, shared language that is specific to that context. The language should be used consistently by everyone involved in the context, including business owners, domain experts and developers. A term or concept might mean one thing in one context and something different in another context.
+A Bounded Context should have a well-defined, shared language that is specific to that context.
+The language should be used consistently by everyone involved in the context, including business owners, domain experts and developers.
+A term or concept might mean one thing in one context and something different in another context.
 
 **Team structure**  
-A Bounded Context should be aligned with the way that teams are organized and communicate with each other. It should take into account the team structure and communication patterns within the organization.
+A Bounded Context should be aligned with the way that teams are organized and communicate with each other.
+It should take into account the team structure and communication patterns within the organization.
 
 **Consistency**  
-A Bounded Context should be internally consistent and coherent. The concepts and rules within the context should make sense and be logical in relation to each other.
+A Bounded Context should be internally consistent and coherent.
+The concepts and rules within the context should make sense and be logical in relation to each other.
 
 **Technology**  
 A Bounded Context may also define a technical boundary, if there are technical requirements that must be considered.
@@ -210,7 +224,8 @@ Teams that need to integrate with the bounded context can adopt the protocol.
 
 The protocol is **governed and evolved** to support new and general integration requirements.
 
-The service provider takes the **upstream position**. Every consuming bounded context is downstream – some teams will follow the upstream model (conformists), while others will implement an **anticorruption layer** to protect their own model.
+The service provider takes the **upstream position**.
+Every consuming bounded context is downstream – some teams will follow the upstream model (conformists), while others will implement an **anticorruption layer** to protect their own model.
 
 ---
 
@@ -274,66 +289,93 @@ The purpose of an Aggregate is to treat related objects as a single unit so that
 #### Characteristics
 
 **Root Entity**  
-An Aggregate consists of a root Entity and related objects. The root Entity defines the boundary of the Aggregate. The objects within the Aggregate are referred to as Aggregate members. All members must be accessed through the root Entity so that consistency of the Aggregate can be maintained.
+An Aggregate consists of a root Entity and related objects.
+The root Entity defines the boundary of the Aggregate.
+The objects within the Aggregate are referred to as Aggregate members.
+All members must be accessed through the root Entity so that consistency of the Aggregate can be maintained.
 
 **Boundary**  
-An Aggregate has a clearly defined boundary that separates it from other Aggregates. The boundary defines which objects are Aggregate members and thus which operations and data are in the Aggregate and which are not.
+An Aggregate has a clearly defined boundary that separates it from other Aggregates.
+The boundary defines which objects are Aggregate members and thus which operations and data are in the Aggregate and which are not.
+The boundary of an aggregate should be chosen based on the specific requirements of the domain model and the use cases of the application.
+When defining an aggregate, it is important to ensure that the resulting design is consistent, cohesive, and performant.
 
 **Identity**  
-An Aggregate has a unique identity that is represented by the root Entity. Aggregate members need only to be distinguishable within the boundary and therefore may have local identities.
+An Aggregate has a unique identity that is represented by the root Entity.
+Aggregate members need only to be distinguishable within the boundary and therefore may have local identities.
 
 **Consistency**  
-Objects in the domain model are subject to domain rules. A more concise term for domain rule is invariant. Invariants must be met to maintain consistency of data and relationships. Within an Aggregate the root Entity is responsible for applying invariants. The root Entity acts as gateway for all operations on the Aggregate and establishes that the Aggregate remains in a consistent state when data changes.
+Objects in the domain model are subject to domain rules.
+A more concise term for domain rule is invariant.
+Invariants must be met to maintain consistency of data and relationships.
+Within an Aggregate the root Entity is responsible for applying invariants.
+The root Entity acts as gateway for all operations on the Aggregate and establishes that the Aggregate remains in a consistent state when data changes.
 
 **Relationships**  
-Objects that are outside an Aggregate and hold references to the Aggregate may only refer to the root Entity. Members of the aggregate may refer to each other freely. If clients need to access Aggregate members, then they must do so through the root Entity. Aggregate members may also refer to other Aggregates but must do so by value.
+Objects that are outside an Aggregate and hold references to the Aggregate may only refer to the root Entity.
+Members of the aggregate may refer to each other freely.
+If clients need to access Aggregate members, then they must do so through the root Entity.
+Aggregate members may also refer to other Aggregates but must do so by value.
 
 #### Modeling hints
 
-Aggregates are useful to create domain models that are easier to reason about, maintain, and evolve over time. An important task is to determine reasonable Aggregate boundaries. The following criteria may guide with modeling.
+Aggregates are useful to create domain models that are easier to reason about, maintain, and evolve over time.
+An important task is to determine reasonable Aggregate boundaries.
+The following criteria may guide with modeling.
 
 **Consistency**  
-An Aggregate must remain in a consistent state when data changes. If changes to an object could impact the consistency of other objects, then they should be modeled as part of the same Aggregate.
+An Aggregate must remain in a consistent state when data changes.
+If changes to an object could impact the consistency of other objects, then they should be modeled as part of the same Aggregate.
 
 **Boundary**  
-Aggregate members should be accessed and modified together frequently. If objects are accessed and modified independently, then they should be part of separate Aggregates.
+Aggregate members should be accessed and modified together frequently.
+If objects are accessed and modified independently, then they should be part of separate Aggregates.
 
 **Transactions**  
-Operations to an Aggregate should be atomic, as part of a single transaction. If changes to an Aggregate member require changes to other objects outside the Aggregate, then these objects should be modeled as part of the same Aggregate.
+Operations to an Aggregate should be atomic, as part of a single transaction.
+If changes to an Aggregate member require changes to other objects outside the Aggregate, then these objects should be modeled as part of the same Aggregate.
 
 **Domain relevance**  
-Aggregate members should represent a cohesive set of logic and data that are related to a specific aspect of the domain. If objects belong to multiple aspects of the domain, then they should be part of separate Aggregates.
+Aggregate members should represent a cohesive set of logic and data that are related to a specific aspect of the domain.
+If objects belong to multiple aspects of the domain, then they should be part of separate Aggregates.
 
 **Granularity**  
-An Aggregate boundary should provide an appropriate granularity. If an Aggregate is too broad, it could impact maintainability negatively. An Aggregate that is too limited may not offer sufficient context for certain use cases.
+An Aggregate boundary should provide an appropriate granularity.
+If an Aggregate is too broad, it could impact maintainability negatively.
+An Aggregate that is too limited may not offer sufficient context for certain use cases.
 
 **Dependencies**  
-An Aggregate boundary should be chosen to minimize interdependencies among Aggregates. Tight coupling between Aggregates can affect scalability and maintainability.
+An Aggregate boundary should be chosen to minimize interdependencies among Aggregates.
+Tight coupling between Aggregates can affect scalability and maintainability.
 
 ---
 
 ### Domain Event
 
-A Domain Event is an abstraction for modeling a significant occurrence or change within the domain that is relevant for domain experts. The purpose of a Domain Event is to allow interested parties to respond to the event and take appropriate action.
+A Domain Event is an abstraction for modeling a significant occurrence or change within the domain that is relevant for domain experts.
+The purpose of a Domain Event is to allow interested parties to respond to the event and take appropriate action.
 
 #### Characteristics
 
 **Significant occurrence**  
-A Domain Event represents a significant occurrence within the domain. This could be a change to the state of an Entity or an Aggregate, the completion of a business process, or the occurrence of a
-significant business event.
+A Domain Event represents a significant occurrence within the domain.
+This could be a change to the state of an Entity or an Aggregate, the completion of a business process, or the occurrence of a significant business event.
 
 **Immutable**  
-A Domain Event is immutable. This ensures that the event is a true historical record of what happened in the domain.
+A Domain Event is immutable.
+This ensures that the event is a true historical record of what happened in the domain.
 
 **Contextual**  
-A Domain Event is specific to a particular Bounded Context. This allows to define Events that represent specific requirements of the context.
+A Domain Event is specific to a particular Bounded Context.
+This allows to define Events that represent specific requirements of the context.
 
 **Published**  
-A Domain Event is published, meaning that it is broadcast to all interested parties within the domain. This allows other parts of the system to respond to the event and take appropriate action.
+A Domain Event is published, meaning that it is broadcast to all interested parties within the domain.
+This allows other parts of the system to respond to the event and take appropriate action.
 
 **Asynchronous**  
-A Domain Event is typically processed asynchronously, meaning that it is handled independently of the process that generated it. This allows the system to continue processing without waiting for the event to be
-handled.
+A Domain Event is typically processed asynchronously, meaning that it is handled independently of the process that generated it.
+This allows the system to continue processing without waiting for the event to be handled.
 
 ---
 
@@ -355,16 +397,23 @@ handled.
 
 ### Service
 
-A Service in general is an abstraction for modeling operations that cannot be clearly assigned to the responsibility of a domain object. A Service is the appropriate place for operations that, in an object, would compromise its conceptual clarity and ease of understanding. A Service does not hold state and therefore can easily scale to handle increasing traffic. A Service can offer a group of related operations that together realize a specific requirement or goal.
+A Service in general is an abstraction for modeling operations that cannot be clearly assigned to the responsibility of a domain object.
+A Service is the appropriate place for operations that, in an object, would compromise its conceptual clarity and ease of understanding.
+A Service does not hold state and therefore can easily scale to handle increasing traffic.
+A Service can offer a group of related operations that together realize a specific requirement or goal.
 
 #### Domain Service
 
-A Domain Service focus on business logic and coordinating tasks that are closely tied to the domain model. It offers significant domain functionality and can be reused more easily. A Domain Service can reduce the
-complexity of the domain model, which may arise through many Aggregates and Entities with fine-grained operations, by providing easy-to-use operations. Clients of the domain model are decoupled from Aggregates and Entities and only need to pass them as parameters of operations and receive them as results.
+A Domain Service focus on business logic and coordinating tasks that are closely tied to the domain model.
+It offers significant domain functionality and can be reused more easily.
+A Domain Service can reduce the complexity of the domain model, which may arise through many Aggregates and Entities with fine-grained operations, by providing easy-to-use operations.
+Clients of the domain model are decoupled from Aggregates and Entities and only need to pass them as parameters of operations and receive them as results.
 
 #### Application Service
 
-An Application Service focus on the interaction with users and as supplier with other systems. It performs tasks that are not relevant to the Domain Layer. Therefore an Application Service may orchestrate fine-grained operations on Services and Objects in the Domain Layer and operations on Services in the Infrastructure Layer.
+An Application Service focus on the interaction with users and as supplier with other systems.
+It performs tasks that are not relevant to the Domain Layer.
+Therefore an Application Service may orchestrate fine-grained operations on Services and Objects in the Domain Layer and operations on Services in the Infrastructure Layer.
 
 #### Infrastructure Service
 
