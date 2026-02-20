@@ -22,7 +22,7 @@ Instead, it serves as:
   - [Bounded Context](#bounded-context)
   - [Big Ball of Mud](#big-ball-of-mud)
   - [Relationship Patterns](#relationship-patterns)
-    - [Upstream / Downstream](upstream--downstream)
+    - [Upstream / Downstream](#upstream--downstream)
     - [Customer / Supplier](#customer--supplier)
     - [Conformist](#conformist)
     - [Partnership](#partnership)
@@ -155,7 +155,7 @@ They clarify upstream and downstream roles and define how contexts align, cooper
 Without the socio-organizational aspect, relationship patterns would essentially be reduced to purely technical dependency and integration decisions.
 They would effectively shrink to three fundamental technical decisions:
 1. Adopt a dependency ([Conformist](#conformist))
-2. Consume a dependency ([Upstream / Downstream](upstream--downstream))
+2. Consume a dependency ([Upstream / Downstream](#upstream--downstream))
 3. Avoid a dependency ([Separate Ways](#separate-ways))
 
 This would result in the loss of the strategic value, which primarily lies in shaping collaboration, influence, and responsibilities.
