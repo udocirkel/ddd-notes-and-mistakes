@@ -75,9 +75,14 @@ A **Bounded Context** is a clearly defined boundary within a domain. Within this
 - the terminology (Ubiquitous Language) is consistent and unambiguous
 - the business concepts and rules are closely related
 - the API for integration with other contexts is clearly defined
+- ownership is assigned to exactly one team
 
 It is useful for reducing complexity, avoiding domain overlap and helping domain experts and developers to focus on specific area of the domain.
 Modeling Bounded Contexts allows domains to be broken down into smaller, more manageable parts that are easier to reason about, maintain, and evolve over time independently.
+
+Each Bounded Context is owned by exactly one team.
+A team may be responsible for multiple Bounded Contexts, but a Bounded Context is never shared by multiple teams.
+The only exception is a [Shared Kernel](#shared-kernel), which represents a small, intentionally shared subset of the model between contexts, but it is not considered a full Bounded Context itself.
 
 Bounded Contexts are **isolated from each other**, meaning that models, language, and rules from one context should **not leak or be mixed** into another context.
 This isolation is crucial to prevent accidental complexity, inconsistent terminology, and the emergence of “Big Balls of Mud” when different contexts influence each other without explicit translation or integration patterns.
