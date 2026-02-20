@@ -21,7 +21,8 @@ Instead, it serves as:
 - [Strategic Domain-Driven Design](#strategic-domain-driven-design)
   - [Bounded Context](#bounded-context)
   - [Big Ball of Mud](#big-ball-of-mud)
-  - [Relationship Patterns between Bounded Contexts](#relationship-patterns-between-bounded-contexts)
+  - [Relationship Patterns](#relationship-patterns)
+    - [Upstream / Downstream](upstream--downstream)
     - [Customer / Supplier](#customer--supplier)
     - [Conformist](#conformist)
     - [Partnership](#partnership)
@@ -146,7 +147,20 @@ It is crucial that such models are **not adopted uncontrolled in other contexts*
 
 ---
 
-### Relationship Patterns between Bounded Contexts
+### Relationship Patterns
+
+Relationship patterns describe how Bounded Contexts relate in terms of influence, responsibility, and collaboration.
+They clarify upstream and downstream roles and define how contexts align, cooperate, or remain independent to manage coupling and enable controlled evolution.
+
+Without the socio-organizational aspect, relationship patterns would essentially be reduced to purely technical dependency and integration decisions.
+They would effectively shrink to three fundamental technical decisions:
+1. Adopt a dependency ([Conformist](#conformist))
+2. Consume a dependency ([Upstream / Downstream](upstream--downstream))
+3. Avoid a dependency ([Separate Ways](#separate-ways))
+
+This would result in the loss of the strategic value, which primarily lies in shaping collaboration, influence, and responsibilities.
+
+---
 
 #### Upstream / Downstream
 
