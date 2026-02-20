@@ -15,6 +15,37 @@ Instead, it serves as:
 - a thinking and communication aid  
 - a reflection on recurring patterns, problems, and architectural decisions  
 
+## Table of contents
+
+- [What is Domain-Driven Design?](#what-is-domain-driven-design)
+- [Strategic Domain-Driven Design](#strategic-domain-driven-design)
+  - [Bounded Context](#bounded-context)
+  - [Big Ball of Mud](#big-ball-of-mud)
+  - [Relationship Patterns between Bounded Contexts](#relationship-patterns-between-bounded-contexts)
+    - [Customer / Supplier](#customer--supplier)
+    - [Conformist](#conformist)
+    - [Partnership](#partnership)
+    - [Separate Ways](#separate-ways)
+  - [Integration Patterns](#integration-patterns)
+    - [Translation Layer](#translation-layer)
+    - [Anticorruption Layer (ACL)](#anticorruption-layer-acl)
+    - [Open Host Service (OHS)](#open-host-service-ohs)
+    - [Published Language](#published-language)
+    - [Shared Kernel](#shared-kernel)
+- [Tactical Domain-Driven Design](#tactical-domain-driven-design)
+  - [Aggregate](#aggregate)
+  - [Domain Event](#domain-event)
+  - [Entity](#entity)
+  - [Value Object](#value-object)
+  - [Factory](#factory)
+  - [Repository](#repository)
+  - [Service](#service)
+    - [Domain Service](#domain-service)
+    - [Application Service](#application-service)
+    - [Infrastructure Service](#infrastructure-service)
+    - [External Service](#external-service)
+  - [Module](#module)
+
 ---
 
 ## What is Domain-Driven Design?
