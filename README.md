@@ -431,6 +431,23 @@ This allows the system to continue processing without waiting for the event to b
 
 ### Entity
 
+An Entity is an abstraction for modeling a domain object with a distinct identity, expressed through its attributes and behavior.
+Its purpose is to encapsulate domain logic and data, providing a clear and expressive interface for interacting with domain objects.
+This helps manage complexity, supports evolving business needs, and keeps the model independent of technical concerns.
+
+#### Characteristics
+
+**Identity**  
+An Entity has a unique identity that is defined by its attributes and behaviors.
+This identity is independent of its values or state, and it remains constant throughout the object's lifetime.
+
+**Mutability**  
+An Entity can change its state over time, but its identity remains constant.
+This means that an entity can be updated or modified without losing its identity.
+
+**Business logic**  
+An Entity encapsulates business logic and business rules that belong to the represented domain object.
+
 ---
 
 ### Value Object
