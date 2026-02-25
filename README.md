@@ -452,13 +452,83 @@ An Entity encapsulates business logic and business rules that belong to the repr
 
 ### Value Object
 
+A Value Object is an abstraction for modeling an immutable object that represents an aspect of the domain and has no conceptual identity or meaning beyond its attribute values.
+Value Objects are typically small and simple objects that encapsulate a specific value or set of values within the domain model.
+Two Value Objects with the same attribute values are considered equal.
+Typical examples of Value Objects include money, measurements, dates, and geographic coordinates.
+
+#### Characteristics
+
+**Equality**  
+Equality of Value Objects is based on attribute values.
+Two instances with the same values are interchangeable.
+
+**Encapsulation**  
+A Value Object encapsulates a specific set of attribute values and the rules governing them, ensuring invariants are always valid.
+
+**Immutability**  
+A Value Objects is immutable, so its state cannot change after creation.
+This prevents unintended side effects and simplifies reasoning about the domain model.
+
+**Side-effect-free**  
+Any behavior on a Value Object returns new instances rather than modifying existing ones.
+
+**Reusability**  
+A Value Object can be used in multiple contexts within the domain model, providing a simple and consistent representation.
+
+**Expressiveness**  
+A Value Object makes the domain model more explicit by giving domain concepts a dedicated type instead of using primitives.
+
 ---
 
 ### Factory
 
+A factory is an abstraction for modeling the creation and initialization process of domain object instances.
+Factories are typically used when creating complex objects that require multiple steps or inputs, or when the creation process itself involves domain logic or business rules.
+They encapsulate this complexity and provide a clear and understandable interface for creating objects, hiding this details from the rest of the domain model.
+Factories can also help enforce constraints such as validity, consistency, and required invariants.
+
+#### Characteristics
+
+**Encapsulation**  
+A Factory ensures that the domain model is not directly responsible for creating and initializing domain objects directly by encapsulating these details.
+This can simplify the domain model and make it easier to understand and maintain.
+
+**Reusability**  
+A Factory can be reused, reducing duplication and centralizing creation logic.
+
+**Consistency**  
+A Factory helps ensure that objects are always created in a valid state by consistently applying business rules and invariants.
+
+**Flexibility**  
+A Factory can support different object creation scenarios, making the model easier to adapt to changing business needs.
+
 ---
 
 ### Repository
+
+A Repository is an abstraction for modeling the lifecycle management of domain objects.
+It provides a simple interface for accessing and manipulating objects in the domain.
+This allows the domain model to interact with storage without dealing with technical details directly.
+
+Repositories and Factories can complement each other:
+A Repository is responsible for retrieving and persisting object instances, while a Factory is responsible for constructing them.
+In some cases, a Repository may delegate object creation to a Factory to ensure that retrieved or newly created instances are properly initialized.
+
+#### Characteristics
+
+**Encapsulation**  
+A Repository shields the domain model from lifecycle details and complex queries or data retrieval operations by defining a common interface for accessing domain objects.
+
+**Decoupling**  
+A Repository separates the domain model from the persistence layer, making it easier to change how data is stored or retrieved without affecting the domain model.
+
+**Reusability**  
+A Repository can be reused, promoting a consistent access pattern and reducing duplication of data access logic.
+
+
+**Flexibility**  
+A Repository can be implemented using different data storage technologies (e.g., relational databases, document databases, flat files), allowing to adapt to changing data storage needs.
 
 ---
 
@@ -488,11 +558,45 @@ An Infrastructure Service has no significant meaning in the domain and covers pu
 
 #### External Service
 
+An External Service provides access to functionality outside the current bounded context that is required by the domain logic.
+It allows the domain to interact with external systems without depending on technical details or implementations.
+
 ---
 
 ### Module
 
-Conceptual Module / Module in the model / Module as namespace
+A Module is an abstraction for organizing related domain concepts and behaviors into cohesive units.
+It manages complexity by defining clear boundaries and responsibilities, and supports separation of concerns by co-locating related concepts while isolating unrelated ones.
+Each module should be cohesive, self-contained, and focused on a specific aspect of the domain.
+
+Different types of modules are commonly distinguished by their responsibilities:
+
+#### Domain Module
+
+A Domain Module contains the core domain model, including entities, value objects, domain services, and repositories.
+They represent the business concepts and rules and remain independent of technical concerns.
+
+#### Application Modules
+
+An Application Module coordinates use cases and orchestrate interactions between the domain and external systems without containing business rules themselves.
+
+#### Infrastructure Modules
+
+An Infrastructure Module provides technical capabilities such as persistence, messaging, or integration with external services, supporting but not influencing the domain logic.
+
+#### Characteristics
+
+**Cohesion**  
+A Module groups closely related domain concepts and behaviors that belong together conceptually.
+
+**Separation of Concerns**  
+A Module defines clear boundaries between different parts of the domain model, reducing coupling and unintended dependencies.
+
+**Encapsulation**  
+Internal details of a module are hidden behind well-defined interfaces, allowing the module to evolve without affecting others.
+
+**Scalability**  
+A Module enables the domain model to grow in a controlled way, by preventing it from becoming a monolithic structure.
 
 ---
 
