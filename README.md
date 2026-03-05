@@ -20,6 +20,7 @@ Instead, it serves as:
 - [What is Domain-Driven Design?](#what-is-domain-driven-design)
 - [Strategic Domain-Driven Design](#strategic-domain-driven-design)
   - [Bounded Context](#bounded-context)
+  - [Ownership of Bounded Contexts](#ownership-of-bounded-contexts)
   - [Big Ball of Mud](#big-ball-of-mud)
   - [Relationship Patterns](#relationship-patterns)
     - [Upstream / Downstream](#upstream--downstream)
@@ -75,7 +76,7 @@ A **Bounded Context** is a clearly defined boundary within a domain. Within this
 - the terminology (Ubiquitous Language) is consistent and unambiguous
 - the business concepts and rules are closely related
 - the API for integration with other contexts is clearly defined
-- ownership is assigned to exactly one team
+- [ownership](#ownership-of-bounded-contexts) is assigned to exactly one team
 
 It is useful for reducing complexity, avoiding domain overlap and helping domain experts and developers to focus on specific area of the domain.
 Modeling Bounded Contexts allows domains to be broken down into smaller, more manageable parts that are easier to reason about, maintain, and evolve over time independently.
@@ -110,11 +111,6 @@ The relationships between Bounded Contexts should be clearly defined and mapped 
 **Consistency**  
 The domain model within a Bounded Context should be internally consistent, with a clear understanding of the business rules and constraints that apply within that context.
 
-**Ownership**  
-According to the ubiquitous language the ownership of a Bounded Context is owned by exactly one team.
-A team may also be responsible for multiple Bounded Contexts.
-A Bounded Context is never owned by more than one team, because this would lead to the loss of clarity about the meaning of terms in the ubiquitous language.
-
 #### Modeling hints
 
 Bounded Contexts are useful to create a clear and well-defined boundary around a specific subdomain or business capability, with a shared language and consistent set of rules and concepts.
@@ -139,6 +135,49 @@ The concepts and rules within the context should make sense and be logical in re
 
 **Technology**  
 A Bounded Context may also define a technical boundary, if there are technical requirements that must be considered.
+
+---
+
+### Ownership of Bounded Contexts
+
+Ownership is more than just access to a domain model or development artifacts.
+It is responsibility, deep domain knowledge, and accountability.
+Maintaining stable ownership within a team is crucial for long-term system health and effective collaboration.
+
+In Domain-Driven Design, this principle of ownership is realized through Bounded Contexts.
+A Bounded Context is not only a clearly defined part of the domain but also carries explicit ownership responsibilities.
+
+Each Bounded Context is owned by exactly one team, while a team may own multiple Bounded Contexts.
+The owning team is responsible for upkeeping the domain model, enforcing business rules, and managing integration points.
+The number of contexts per team should be limited to avoid excessive cognitive load, ensuring that knowledge, accountability, and quality can be effectively preserved.
+
+**⚠️ Why shared Ownership between teams is discouraged**
+
+Multiple teams should not share a single Bounded Context, as this leads to inconsistencies in language, model understanding, and overall ownership.
+Interactions with other Bounded Contexts should occur only through explicit integration patterns such as APIs, domain events, or anti-corruption layers.
+Clear ownership ensures model consistency, reduces coupling, and clarifies accountability across teams.
+
+**⚠️ Why transferring ownership between teams is usually discouraged**
+
+Shifting domain ownership between teams often impacts stability, development quality, and efficiency, because existing knowledge and relationships within the domain are lost. The main risks include:
+
+**Loss of domain knowledge**  
+Implicit understanding of business rules, decisions, and context leaves with the transferring team, requiring time-consuming rebuilding with higher risk of errors and delays.
+
+**High handover costs**  
+Knowledge transfer, onboarding, and context reconstruction consume significant time and capacity, reducing productivity during the transition.
+
+**Quality risks in inherited code**  
+Without deep knowledge of architecture and design, the new team may struggle, increasing the likelihood of mistakes and uncertainty.
+
+**Loss of ownership mindset**  
+Frequently changing responsibilities reduce long-term accountability and encourage reactive rather than proactive development.
+
+**Demotivation and frustration**  
+Taking over “foreign” systems or losing one’s domain home can lower motivation and create tensions between teams.
+
+**Increased coordination effort**  
+Lack of domain expertise slows decision-making and raises dependency and alignment overhead.
 
 ---
 
