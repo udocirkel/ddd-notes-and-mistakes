@@ -88,11 +88,11 @@ A Domain that supports the core domain but does not differentiate the organizati
 **Generic Domain**  
 A Domain that covers common and well-understood problems with no competitive relevance. It can often be addressed using standard solutions or libraries.
 
-The mapping of subdomains to software is achieved through bounded contexts.
-Ideally, subdomains and bounded contexts align closely.
-While (sub)domains represent the problem space and contain business-related concerns, bounded contexts represent the solution space and include deliberate modeling decisions within the software.
+The mapping of subdomains to software is achieved through [Bounded Contexts](#bounded-context).
+Ideally, subdomains and Bounded Contexts align closely.
+While (sub)domains represent the problem space and contain business-related concerns, Bounded Contexts represent the solution space and include deliberate modeling decisions within the software.
 
-(Sub)domains are defined by domain experts, whereas bounded contexts are defined by architects and developers.
+(Sub)domains are defined by domain experts, whereas Bounded Contexts are defined by architects and developers.
 
 ---
 
