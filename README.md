@@ -19,6 +19,7 @@ Instead, it serves as:
 
 - [What is Domain-Driven Design?](#what-is-domain-driven-design)
 - [Strategic Domain-Driven Design](#strategic-domain-driven-design)
+  - [Domain](#domain)
   - [Bounded Context](#bounded-context)
   - [Ownership of Bounded Contexts](#ownership-of-bounded-contexts)
   - [Big Ball of Mud](#big-ball-of-mud)
