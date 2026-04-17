@@ -79,13 +79,13 @@ It is therefore usually divided into distinct subdomains.
 
 Domains (and also subdomains) are typically differentiated based on their strategic importance.
 
-**Core Domain**
+**Core Domain**  
 A Domain that represents the organization’s primary competitive advantage. It is the main reason the software solution exists and deserves the highest strategic investment.
 
-**Supporting Domain**
+**Supporting Domain**  
 A Domain that supports the core domain but does not differentiate the organization from its competitors. It is operationally necessary, but not strategically critical.
 
-**Generic Domain**
+**Generic Domain**  
 A Domain that covers common and well-understood problems with no competitive relevance. It can often be addressed using standard solutions or libraries.
 
 The mapping of subdomains to software is achieved through bounded contexts.
