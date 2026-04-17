@@ -69,6 +69,32 @@ The focus of **Strategic Domain-Driven Design** is primarily:
 
 ---
 
+### Domain
+
+A **Domain** represents a specific area of business knowledge, responsibility, and activity in which an organization operates.
+It defines the subject area that the software must address the problems to be solved, the rules to be followed, and the language to be used.
+A domain is typically too large and complex to be treated as a single unit.
+It is therefore usually divided into distinct subdomains.
+
+Domains (and also subdomains) are typically differentiated based on their strategic importance.
+
+**Core Domain**
+A Domain that represents the organization’s primary competitive advantage. It is the main reason the software solution exists and deserves the highest strategic investment.
+
+**Supporting Domain**
+A Domain that supports the core domain but does not differentiate the organization from its competitors. It is operationally necessary, but not strategically critical.
+
+**Generic Domain**
+A Domain that covers common and well-understood problems with no competitive relevance. It can often be addressed using standard solutions or libraries.
+
+The mapping of subdomains to software is achieved through bounded contexts.
+Ideally, subdomains and bounded contexts align closely.
+While (sub)domains represent the problem space and contain business-related concerns, bounded contexts represent the solution space and include deliberate modeling decisions within the software.
+
+(Sub)domains are defined by domain experts, whereas bounded contexts are defined by architects and developers.
+
+---
+
 ### Bounded Context
 
 A **Bounded Context** is a clearly defined boundary within a domain. Within this boundary:
